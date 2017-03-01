@@ -28,7 +28,6 @@ var arc = d3.svg.arc()
     .outerRadius(function(d) { return radius / 3 * (d.depth + 1) - 1; });
 
 d3.json("data.json", function(error, root) {
-  console.log(root);
   if (error) throw error;
 
   // Compute the initial layout on the entire tree to sum sizes.
@@ -43,6 +42,7 @@ d3.json("data.json", function(error, root) {
         d.key = key(d);
         d.fill = fill(d);
       });
+      console.log(root);
 
   // Now redefine the value function to use the previously-computed sum.
   partition
