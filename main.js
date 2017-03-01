@@ -42,13 +42,12 @@ d3.json("data.json", function(error, root) {
         d.key = key(d);
         d.fill = fill(d);
       });
-      console.log(root);
 
   // Now redefine the value function to use the previously-computed sum.
   partition
       .children(function(d, depth) { return depth < 2 ? d._children : null; })
       .value(function(d) { return d.sum; });
-
+console.log(partition);
   var center = svg.append("circle")
       .attr("r", radius / 3)
       .on("click", zoomOut);
