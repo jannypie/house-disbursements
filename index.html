@@ -124,6 +124,17 @@
         })
         .on("click", zoomIn);
 
+      var path = svg.selectAll("path")
+        .data(partition.nodes(root).slice(1))
+        .enter().append("svg:text")
+        .text(function(d) {
+          return d.name;
+        })
+        .style("text-anchor", "middle")
+        .style("fill", "#555")
+        .style("font-family", "Arial")
+        .style("font-size", 12);
+
       function zoomIn(p) {
         if (p.depth > 1) p = p.parent;
         if (!p.children) return;
