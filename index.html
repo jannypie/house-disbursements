@@ -93,6 +93,7 @@
           d.sum = d.value;
           d.key = key(d);
           d.fill = fill(d);
+          d.name = d.name;
         });
 
       // Now redefine the value function to use the previously-computed sum.
@@ -121,15 +122,7 @@
         .each(function(d) {
           this._current = updateArc(d);
         })
-        .on("click", zoomIn)
-        .append("svg:text")
-        .text(function(d) {
-          return d.name;
-        })
-        .style("text-anchor", "middle")
-        .style("fill", "#555")
-        .style("font-family", "Arial")
-        .style("font-size", 12);;
+        .on("click", zoomIn);
 
       function zoomIn(p) {
         if (p.depth > 1) p = p.parent;
