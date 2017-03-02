@@ -28,6 +28,7 @@ var arc = d3.svg.arc()
     .outerRadius(function(d) { return radius / 3 * (d.depth + 1) - 1; });
 
 d3.json("data.json", function(error, root) {
+  root = finalData;
   if (error) throw error;
 
   // Compute the initial layout on the entire tree to sum sizes.
@@ -47,7 +48,7 @@ d3.json("data.json", function(error, root) {
   partition
       .children(function(d, depth) { return depth < 2 ? d._children : null; })
       .value(function(d) { return d.sum; });
-console.log(partition);
+
   var center = svg.append("circle")
       .attr("r", radius / 3)
       .on("click", zoomOut);
