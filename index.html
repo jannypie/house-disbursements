@@ -89,6 +89,7 @@
         })
         .nodes(root)
         .forEach(function(d) {
+          console.log(d);
           d._children = d.children;
           d.sum = d.value;
           d.key = key(d);
