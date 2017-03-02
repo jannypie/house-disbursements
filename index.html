@@ -121,8 +121,7 @@
         .each(function(d) {
           this._current = updateArc(d);
         })
-        .on("click", zoomIn)
-        .append("text").text(d.key);
+        .on("click", zoomIn);
 
       function zoomIn(p) {
         if (p.depth > 1) p = p.parent;
