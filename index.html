@@ -204,6 +204,16 @@
               this._current = enterArc(d);
             });
 
+          path.enter().append("svg:text")
+            .text(function(d) {
+              return d.name;
+            })
+            .style("text-anchor", "middle")
+            .style("fill", "#555")
+            .style("font-family", "Arial")
+            .style("font-size", 12);
+
+
           path.transition()
             .style("fill-opacity", 1)
             .attrTween("d", function(d) {
