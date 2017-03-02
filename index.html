@@ -27,11 +27,11 @@
 </head>
 
 <body>
-  <script src="jquery.min.js"></script>
-  <!-- <script src="d3.v3.min.js"></script> -->
-  <script src="dataToProcess.js"></script>
+  <!-- <script src="jquery.min.js"></script> -->
+  <script src="d3.v3.min.js"></script>
+  <!-- <script src="dataToProcess.js"></script> -->
   <!-- <script src="main.js"></script> -->
-  <!-- <script type="text/javascript">
+  <script type="text/javascript">
     var margin = {
         top: 350,
         right: 480,
@@ -74,7 +74,7 @@
       .outerRadius(function(d) {
         return radius / 3 * (d.depth + 1) - 1;
       });
-    d3.json("data.json", function(error, root) {
+    d3.json("app/MYNEWDATA.json", function(error, root) {
 
       root = finalData;
 
@@ -245,7 +245,7 @@
 
     d3.select(self.frameElement).style("height", margin.top + margin.bottom + "px");
 
-  </script> -->
+  </script>
 </body>
 
 </html>
