@@ -35589,21 +35589,20 @@ MYDATA = [
 
 
 ALLDATA = {}
+PRINTDATA = [{
+  name: "housedata",
+  children: []
+  }]
 
 def processdata
 
   populateorgs
   populateprogs
   populatedetails
+  formatdata
 
-  printData = [{
-    name: "housedata",
-    children: ALLDATA
-    }]
-  # p progs
-  # orgs = [{:name => "house", :children => []}]
-  printData = printData.to_json
-  File.write('MYNEWDATA.json', printData)
+  printData = PRINTDATA.to_json
+  File.write('data.json', printData)
   # p orgs
 end
 
@@ -35621,7 +35620,6 @@ def populateorgs
       }
     end
   end
-  p ALLDATA.length
 end
 
 def populateprogs
@@ -35650,10 +35648,22 @@ def populatedetails
     ALLDATA[org][:children][prog][:children].push({name: desc, size: size})
 
   end
-  p ALLDATA
 end
 
+def formatdata
 
+  ALLDATA.each do |org,v|
+    orgchildren = []
+    v[:children].each do |prg,w|
+      orgchildren.push(w)
+    end
+    v[:children] = orgchildren
+    PRINTDATA[0][:children].push(v)
+  end
+  p '.............'
+  p ALLDATA
+  # p PRINTDATA
+end
 
 processdata
 # p ALLDATA.length
