@@ -23,6 +23,11 @@
       display: block;
     }
 
+    label {
+      font: 10px sans-serif;
+      text-anchor: middle;
+    }
+
   </style>
 </head>
 
@@ -75,7 +80,10 @@
         return radius / 3 * (d.depth + 1) - 1;
       });
 
-
+    var text = svg.selectAll("text")
+      .enter()
+      .append("text")
+      .attr("class", "label");
 
 
     d3.json("dataApp/data.json", function(error, root) {
@@ -127,17 +135,13 @@
         })
         .on("click", zoomIn);
 
-      var text = svg.selectAll("text")
-        .data(partition.nodes(root).slice(1))
-        .enter()
-        .attr("dx", function(d) {
-          return d.x
+      path.append("text")
+        .attr("transform", function(d) {
+          return "translate(" + radius / 2 + ")";
         })
         .text(function(d) {
-          return (d.name);
-        });
-
-
+          return d.name;
+        })
 
       function zoomIn(p) {
         if (p.depth > 1) p = p.parent;
@@ -205,7 +209,6 @@
             .attrTween("d", function(d) {
               return arcTween.call(this, exitArc(d));
             })
-            .append("text")
             .remove();
 
           path.enter().append("path")
@@ -263,6 +266,10 @@
     d3.select(self.frameElement).style("height", margin.top + margin.bottom + "px");
 
   </script>
+</body>
+
+</html>
+ipt>
 </body>
 
 </html>
