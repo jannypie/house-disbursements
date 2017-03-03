@@ -192,8 +192,7 @@
           }).enter().append("text")
           .attr("dx", function(d) {
             return
-          })
-          .exit();
+          });
 
         // When zooming out, arcs enter from the inside and exit to the outside.
         // Exiting outside arcs transition to the new layout.
