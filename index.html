@@ -130,14 +130,15 @@
         .on("click", zoomIn);
 
       var text = svg.selectAll("text")
-        .append("text")
+        .data(partition.nodes(root).slice(1))
+        .enter().append("text")
         .attr('class', 'label')
         .attr("transform", function(d) {
           return "translate(" + radius / 2 + ")";
         })
         .text(function(d) {
           return d.name;
-        })
+        });
 
       function zoomIn(p) {
         if (p.depth > 1) p = p.parent;
