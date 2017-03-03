@@ -130,7 +130,6 @@
         .on("click", zoomIn);
 
       var text = svg.selectAll("text")
-        .enter()
         .append("text")
         .attr('class', 'label')
         .attr("transform", function(d) {
