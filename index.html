@@ -23,7 +23,7 @@
       display: block;
     }
 
-    label {
+    .label {
       font: 10px sans-serif;
       text-anchor: middle;
     }
@@ -133,9 +133,6 @@
         .data(partition.nodes(root).slice(1))
         .enter().append("text")
         .attr('class', 'label')
-        .attr("transform", function(d) {
-          return "translate(" + radius / 2 + ")";
-        })
         .text(function(d) {
           return d.name;
         });
@@ -219,6 +216,10 @@
             .each(function(d) {
               this._current = enterArc(d);
             });
+
+          path.enter().append("text");
+
+
 
           path.transition()
             .style("fill-opacity", 1)
