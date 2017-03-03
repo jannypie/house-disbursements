@@ -188,8 +188,11 @@
         if (root === p) enterArc = outsideArc, exitArc = insideArc, outsideAngle.range([p.x, p.x + p.dx]);
 
         path = path.data(partition.nodes(root).slice(1), function(d) {
-          return d.key;
-        });
+            return d.key;
+          }).enter().append("text")
+          .attr("dx", function(d) {
+            return
+          });;
 
         // When zooming out, arcs enter from the inside and exit to the outside.
         // Exiting outside arcs transition to the new layout.
@@ -216,10 +219,6 @@
             .each(function(d) {
               this._current = enterArc(d);
             });
-
-          path.enter().append("text");
-
-
 
           path.transition()
             .style("fill-opacity", 1)
