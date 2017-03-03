@@ -129,8 +129,8 @@
 
       var text = svg.selectAll("text")
         .data(partition.nodes(root).slice(1))
-        .enter().append("text")
-        .attr("dy", function(d) {
+        .enter()
+        .attr("dx", function(d) {
           return d.x
         })
         .text(function(d) {
@@ -205,6 +205,7 @@
             .attrTween("d", function(d) {
               return arcTween.call(this, exitArc(d));
             })
+            .append("text")
             .remove();
 
           path.enter().append("path")
