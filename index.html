@@ -80,12 +80,6 @@
         return radius / 3 * (d.depth + 1) - 1;
       });
 
-    var text = svg.selectAll("text")
-      .enter()
-      .append("text")
-      .attr("class", "label");
-
-
     d3.json("dataApp/data.json", function(error, root) {
 
       if (error) throw error;
@@ -135,7 +129,10 @@
         })
         .on("click", zoomIn);
 
-      path.append("text")
+      var text = svg.selectAll("text")
+        .enter()
+        .append("text")
+        .attr('class', 'label')
         .attr("transform", function(d) {
           return "translate(" + radius / 2 + ")";
         })
